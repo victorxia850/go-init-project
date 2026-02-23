@@ -35,6 +35,7 @@ func main() {
 			defer wg.Done()
 			counter.Increment()
 			atomic.AddInt64(&upCount, 1) // 记录成功次数
+			fmt.Printf("****** 点赞任务 %d 完成 ******\n", i)
 		}()
 	}
 
@@ -45,6 +46,8 @@ func main() {
 			defer wg.Done()
 			counter.Decrement()
 			atomic.AddInt64(&downCount, 1) // 记录成功次数
+			fmt.Printf("====== 取消任务 %d 完成 ======\n", i)
+
 		}()
 	}
 
